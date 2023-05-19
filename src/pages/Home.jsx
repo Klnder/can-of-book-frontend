@@ -1,11 +1,9 @@
 import axios from "axios";
-import React, { useEffect } from "react";
-import "./Main.css";
-import BookList from "./BookList/BookList";
+import React, { useEffect, useState } from "react";
+import "./Home.css";
+import BookList from "../components/Book/BookList";
 
-import { useState } from "react";
-
-export default function Main() {
+export default function Home() {
   const [books, setBooks] = useState([]);
   const [form, setForm] = useState({
     title: "",
@@ -58,10 +56,13 @@ export default function Main() {
     <main>
       <h1>Books</h1>
       <form onSubmit={postBook}>
-        <input type="text" name="title" placeholder="title" onChange={handleChange} value={form.title} />
-        <input type="text" name="description" placeholder="description" onChange={handleChange} value={form.description} />
-        <input type="text" name="status" placeholder="status" onChange={handleChange} value={form.status} />
-        <input type="submit" />
+        <fieldset>
+          <legend>Add a book</legend>
+          <input type="text" name="title" placeholder="title" onChange={handleChange} value={form.title} />
+          <input type="text" name="description" placeholder="description" onChange={handleChange} value={form.description} />
+          <input type="text" name="status" placeholder="status" onChange={handleChange} value={form.status} />
+          <input type="submit" />
+        </fieldset>
       </form>
       {books}
     </main>
